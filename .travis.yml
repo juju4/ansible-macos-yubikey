@@ -9,6 +9,7 @@ before_install:
   - sw_vers
   - uname -a
   - brew update
+  - brew install libidn2
   - brew install openssl
   - brew upgrade openssl
   - brew ls --verbose openssl
