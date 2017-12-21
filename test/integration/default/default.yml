@@ -4,8 +4,8 @@
   vars:
     - macos_apps_install_list:
 # https://www.yubico.com/support/knowledge-base/categories/articles/smart-card-tools/
-        - { u: 'https://developers.yubico.com/yubikey-piv-manager/Releases/yubikey-piv-manager-1.4.2b-mac.pkg', s: '34fb7e49ac6ec0ed0162a9cd44b9256c118b154df3561a33e67586d377f753ec', n: 'YubiKey PIV Manager', t: 'pkgonly', version: '1.4.2' }
-        - { u: 'https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-1.4.3-mac.zip', s: 'ac038a2c8df9bef8cd98b977f039e483f43f1fbaf4425df17fb7ae0886ba3f31', n: 'yubico-piv-tool', t: 'zip', version: '1.4.3', to: '/usr/local/yubico-piv-tool', versioncmd: '/usr/local/yubico-piv-tool/bin/yubico-piv-tool  --version | sed "s@yubico-piv-tool @@"' }
+        - { u: 'https://developers.yubico.com/yubikey-piv-manager/Releases/yubikey-piv-manager-1.4.2b-mac.pkg', s: '34fb7e49ac6ec0ed0162a9cd44b9256c118b154df3561a33e67586d377f753ec', n: 'YubiKey PIV Manager', t: 'pkgonly', version: '1.4.2', v: false }
+        - { u: 'https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-1.4.3-mac.zip', s: 'ac038a2c8df9bef8cd98b977f039e483f43f1fbaf4425df17fb7ae0886ba3f31', n: 'yubico-piv-tool', t: 'zip', version: '1.4.3', to: '/usr/local/yubico-piv-tool', versioncmd: '/usr/local/yubico-piv-tool/bin/yubico-piv-tool  --version | sed "s@yubico-piv-tool @@"', v: false }
     - yubikey_users:
         - vagrant
     - verbose: true
