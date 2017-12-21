@@ -13,7 +13,7 @@ before_install:
   - brew install python
   - brew update
   - python --version
-  - pip --version
+#  - pip --version
   - python -c "import ssl; print(ssl.OPENSSL_VERSION)"
   - python3 --version
   - python3 -c "import ssl; print(ssl.OPENSSL_VERSION)"
