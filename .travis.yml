@@ -10,8 +10,11 @@ before_install:
   - uname -a
   - brew update
   - brew install openssl
+  - brew upgrade openssl
+  - brew ls --verbose openssl
   - brew install python3
   - brew update
+  - brew doctor
   - python --version
 #  - pip --version
   - python -c "import ssl; print(ssl.OPENSSL_VERSION)"
@@ -27,8 +30,7 @@ before_install:
   - "[ -f get-dependencies.sh ] && sh -x get-dependencies.sh"
 #  - find $HOME/Library $HOME/.local -ls || true
   - openssl s_client -connect developers.yubico.com:443  -cipher 'ALL' < /dev/null || true
-  - /usr/local/bin/openssl s_client -connect developers.yubico.com:443  -cipher 'ALL' < /dev/null || true
-  - cat /usr/local/Library/Taps/homebrew/homebrew-core/Formula/python3.rb || true
+  - $(brew --prefix)/opt/openssl/bin/openssl s_client -connect developers.yubico.com:443  -cipher 'ALL' < /dev/null || true
 install:
   - pip3 install ansible
   - ansible --version
