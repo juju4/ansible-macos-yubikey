@@ -33,7 +33,7 @@ before_install:
   - openssl s_client -connect developers.yubico.com:443  -cipher 'ALL' < /dev/null || true
   - $(brew --prefix)/opt/openssl/bin/openssl s_client -connect developers.yubico.com:443  -cipher 'ALL' < /dev/null || true
 ## workaround to openssl mess
-  - mkdir /private/var/_install
+  - sudo install -d -o travis -m755 /private/var/_install
   - brew install curl
   - curl -o /private/var/_install/yubikey-piv-manager-1.4.2b-mac.pkg https://developers.yubico.com/yubikey-piv-manager/Releases/yubikey-piv-manager-1.4.2b-mac.pkg
   - curl -o /private/var/_install/yubico-piv-tool-1.4.3-mac.zip https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-1.4.3-mac.zip
