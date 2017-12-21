@@ -27,7 +27,7 @@ before_install:
   - "[ -f get-dependencies.sh ] && sh -x get-dependencies.sh"
 #  - find $HOME/Library $HOME/.local -ls || true
 install:
-  - brew install ansible
+  - pip3 install ansible
   - ansible --version
   - which ansible
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
