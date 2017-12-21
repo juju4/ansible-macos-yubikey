@@ -5,8 +5,6 @@ os:
 
 #language: python
 #python: "2.7"
-before_install:
- - ln -s ansible-macos-sleepwatcher ../juju4.macos-sleepwatcher
 install:
   - sw_vers
   - uname -a
