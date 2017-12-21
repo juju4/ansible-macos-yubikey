@@ -1,0 +1,13 @@
+---
+
+install_archives: /private/var/_install
+macos_prefix: /usr/local
+
+yubikey_users: []
+#yubikey_users:
+#  - user1
+
+# only for ElCapitan and below
+yubikey_fail_ifnotinitialize: true
+yubikey_for_login: true
+yubikey_for_screensaver: true

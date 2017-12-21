@@ -1,0 +1,7 @@
+---
+# https://www.yubico.com/support/knowledge-base/categories/articles/how-to-use-your-yubikey-with-macos-sierra/
+# https://www.yubico.com/2016/09/yubikey-smart-card-support-for-macos-sierra-2/
+# https://forum.yubico.com/viewtopic.php?f=23&t=2450    No support for screen unlock, filevault...
+# set up with PIV manager
+
+- debug: msg="Nothing more to do! Just set up your key if not and do the pairing in Yubikey PIV Manager."

@@ -1,0 +1,49 @@
+---
+# https://www.yubico.com/wp-content/uploads/2016/02/Yubico_YubiKeyMacOSXLogin_en.pdf
+
+- name: Ensure yubico config directory exists for each user
+  file:
+    dest: "/Users/{{ item }}/.yubico"
+    mode: '0700'
+    owner: "{{ item }}"
+    state: directory
+  with_items: "{{ yubikey_users }}"
+
+- name: Ensure pam_yubico module is present
+  stat: path=/usr/local/lib/security/pam_yubico.so
+  register: pam_yubico
+
+- fail: msg="Missing /usr/local/lib/security/pam_yubico.so"
+  when: not pam_yubico.stat.exists
+
+- name: Check if initial challenge-response is stored for at least one user
+  command: "ls /Users/{{ '{' }}{{ yubikey_users | join(',') }}{{ '}' }}/.yubico/challenge-*"
+  changed_when: false
+  ignore_errors: true
+  register: init
+
+- fail: msg="It seems no user did initial challenge-response... stopping to avoid lock out"
+  when: yubikey_fail_ifnotinitialize and (init.rc != 0 or init.stdout == '')
+
+- block:
+    - name: Enable yubikey for unlocking screensaver
+      lineinfile:
+        dest: /etc/pam.d/authorization
+        regexp: '^auth\s+required\s+/usr/local/lib/security/pam_yubico.so mode=challenge-response$'
+        line: 'auth       required       /usr/local/lib/security/pam_yubico.so mode=challenge-response'
+        insertbefore: '^account    required       '
+        mode: '0644'
+        backup: yes
+  when: yubikey_for_login
+
+- block:
+    - name: Enable yubikey for unlocking screensaver
+      lineinfile:
+        dest: /etc/pam.d/screensaver
+        regexp: '^auth\s+required\s+/usr/local/lib/security/pam_yubico.so mode=challenge-response$'
+        line: 'auth       required       /usr/local/lib/security/pam_yubico.so mode=challenge-response'
+        insertbefore: '^account    required       '
+        mode: '0644'
+        backup: yes
+      when: pam_yubico.stat.exists
+  when: yubikey_for_screensaver

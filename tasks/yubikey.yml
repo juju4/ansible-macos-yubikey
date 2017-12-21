@@ -1,0 +1,11 @@
+---
+
+- debug: msg="{{ ansible_distribution_version | version_compare( '10.12', '<') }}"
+
+- include: yubikey-elcapitan.yml
+  when: ansible_distribution_version | version_compare( '10.12', '<')
+
+- debug: msg="{{ ansible_distribution_version | version_compare( '10.12', '>=') }}"
+
+- include: yubikey-sierra-piv.yml
+  when: ansible_distribution_version | version_compare( '10.12', '>=')
