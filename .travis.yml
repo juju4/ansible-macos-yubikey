@@ -15,7 +15,6 @@ before_install:
   - brew ls --verbose openssl
 #  - brew install python3
   - brew update
-  - brew install python@2 xz
   - brew doctor
   - python --version
 #  - pip --version
