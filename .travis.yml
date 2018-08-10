@@ -6,12 +6,14 @@ os:
 #language: python
 #python: "2.7"
 before_install:
+  - "[ -f get-dependencies.sh ] && sh -x get-dependencies.sh"
   - sw_vers
   - uname -a
   - brew update
   - brew install libidn2
   - brew install openssl
-  - brew upgrade openssl
+  - brew outdated
+  - if (brew outdated | grep openssl > /dev/null); then brew upgrade openssl; fi
   - brew ls --verbose openssl
 #  - brew install python3
   - brew upgrade python
@@ -29,7 +31,6 @@ before_install:
 #  - pip install --user ansible ansible-lint
   - env
   - find . -ls
-  - "[ -f get-dependencies.sh ] && sh -x get-dependencies.sh"
 #  - find $HOME/Library $HOME/.local -ls || true
   - openssl s_client -connect developers.yubico.com:443  -cipher 'ALL' < /dev/null || true
   - $(brew --prefix)/opt/openssl/bin/openssl s_client -connect developers.yubico.com:443  -cipher 'ALL' < /dev/null || true
