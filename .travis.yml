@@ -9,14 +9,15 @@ before_install:
   - "[ -f get-dependencies.sh ] && sh -x get-dependencies.sh"
   - sw_vers
   - uname -a
+  - python --version
   - brew update
   - brew install libidn2
   - brew install openssl
   - brew outdated
-  - if (brew outdated | grep openssl > /dev/null); then brew upgrade openssl; fi
+# xcode9.2: force python upgrade...
+  - if (brew outdated | grep python > /dev/null); then brew upgrade python || brew link --overwrite python@2; fi
+  - if (brew outdated | grep openssl > /dev/null); then brew upgrade openssl || true; fi
   - brew ls --verbose openssl
-#  - brew install python3
-  - brew upgrade python
   - brew update
   - brew doctor || true
   - python --version
@@ -41,7 +42,10 @@ before_install:
   - curl -o /private/var/_install/yubico-piv-tool-1.4.3-mac.zip https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-1.4.3-mac.zip
 
 install:
+#  - brew install ansible
+  - python -c 'import ssl; ssl.PROTOCOL_TLSv1_2' || true
   - pip3 install ansible
+  - python3 -c 'import ssl; ssl.PROTOCOL_TLSv1_2'
   - ansible --version
   - which ansible
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
@@ -60,5 +64,6 @@ script:
 ## FIXME! known fail
   - "ansible-playbook -i inventory test/integration/default/default.yml --connection=local --become | tee /tmp/idempotency.log | grep -q 'changed=0.*failed=0'  && (echo 'Idempotence test: pass' && exit 0)  || (echo 'Idempotence test: fail' && cat /tmp/idempotency.log && exit 0)"
 
+after_script:
   - "ls -A $HOME/"
   - "ls -A /Applications/"
