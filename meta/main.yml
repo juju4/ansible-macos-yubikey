@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: macos_yubikey
   author: juju4
   description: setup yubikey utilities on macOS
   license: BSD
