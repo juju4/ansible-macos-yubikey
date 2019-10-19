@@ -48,7 +48,7 @@
               t: pkgonly,
               version: 2.24
             }
-      when: ansible_distribution_version | version_compare( '10.12', '<')
+      when: ansible_distribution_version is version_compare( '10.12', '<')
   roles:
     - juju4.macos_apps_install
     - juju4.macos_yubikey
