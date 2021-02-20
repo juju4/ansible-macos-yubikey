@@ -1,5 +1,3 @@
-[![Build Status - Master](https://travis-ci.org/juju4/ansible-macos-yubikey.svg?branch=master)](https://travis-ci.org/juju4/ansible-macos-yubikey)
-[![Build Status - Devel](https://travis-ci.org/juju4/ansible-macos-yubikey.svg?branch=devel)](https://travis-ci.org/juju4/ansible-macos-yubikey/branches)
 # macOS yubikey ansible role
 
 Ansible role to setup yubikey on macOS.
