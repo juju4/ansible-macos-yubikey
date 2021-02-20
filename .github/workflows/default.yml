@@ -51,6 +51,7 @@ jobs:
       - name: yamllint
         run: |
           cd $GITHUB_WORKSPACE/juju4.macos_yubikey && yamllint .
+          cat .yamllint
       - name: ansible-lint
         run: |
           cd $GITHUB_WORKSPACE/juju4.macos_yubikey && ansible-lint
