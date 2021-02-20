@@ -4,8 +4,8 @@ install_archives: /private/var/_install
 macos_prefix: /usr/local
 
 yubikey_users: []
-#yubikey_users:
-#  - user1
+# yubikey_users:
+#   - user1
 
 # only for ElCapitan and below
 yubikey_fail_ifnotinitialize: true
