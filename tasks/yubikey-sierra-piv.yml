@@ -4,4 +4,5 @@
 # https://forum.yubico.com/viewtopic.php?f=23&t=2450    No support for screen unlock, filevault...
 # set up with PIV manager
 
-- debug: msg="Nothing more to do! Just set up your key if not and do the pairing in Yubikey PIV Manager."
+- name: Message
+  debug: msg="Nothing more to do! Just set up your key if not and do the pairing in Yubikey PIV Manager."
