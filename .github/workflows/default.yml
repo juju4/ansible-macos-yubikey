@@ -10,12 +10,12 @@ on:
 jobs:
   build:
 
-    runs-on: macos-10.15
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       max-parallel: 4
     env:
-      ANSIBLE_CALLBACK_WHITELIST: profile_tasks
+      ANSIBLE_CALLBACKS_ENABLED: profile_tasks
 
     steps:
       - uses: actions/checkout@v2
