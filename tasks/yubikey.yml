@@ -1,7 +1,7 @@
 ---
 
 - name: Debug | ansible_distribution_version
-  debug:
+  ansible.builtin.debug:
     var: ansible_distribution_version
 
 - import_tasks: yubikey-elcapitan.yml

@@ -5,4 +5,4 @@
 # set up with PIV manager
 
 - name: Message
-  debug: msg="Nothing more to do! Just set up your key if not and do the pairing in Yubikey PIV Manager."
+  ansible.builtin.debug: msg="Nothing more to do! Just set up your key if not and do the pairing in Yubikey PIV Manager."
