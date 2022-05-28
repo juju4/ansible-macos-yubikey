@@ -44,4 +44,3 @@ This role has a travis basic test (for github).
 ## License
 
 BSD 2-clause
-
