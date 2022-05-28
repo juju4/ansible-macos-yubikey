@@ -27,7 +27,8 @@
   ansible.builtin.fail: msg="It seems no user did initial challenge-response... stopping to avoid lock out"
   when: yubikey_fail_ifnotinitialize and (init.rc != 0 or not init.stdout|string)
 
-- block:
+- name: Yubikey login
+  block:
     - name: Enable yubikey for unlocking screensaver
       ansible.builtin.lineinfile:
         dest: /etc/pam.d/authorization
@@ -38,7 +39,8 @@
         backup: yes
   when: yubikey_for_login
 
-- block:
+- name: Yubikey screensaver
+  block:
     - name: Enable yubikey for unlocking screensaver
       ansible.builtin.lineinfile:
         dest: /etc/pam.d/screensaver
