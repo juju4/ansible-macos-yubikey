@@ -25,7 +25,7 @@
 
 - name: Fatal. missing challenge-response
   ansible.builtin.fail: msg="It seems no user did initial challenge-response... stopping to avoid lock out"
-  when: yubikey_fail_ifnotinitialize and (init.rc != 0 or not init.stdout|string)
+  when: yubikey_fail_ifnotinitialize and (init.rc != 0 or not init.stdout | string)
 
 - name: Yubikey login
   block:
