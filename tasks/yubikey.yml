@@ -4,8 +4,10 @@
   ansible.builtin.debug:
     var: ansible_distribution_version
 
-- import_tasks: yubikey-elcapitan.yml
+- name: Import yubikey-elcapitan
+  ansible.builtin.import_tasks: yubikey-elcapitan.yml
   when: ansible_distribution_version is version_compare( '10.12', '<')
 
-- import_tasks: yubikey-sierra-piv.yml
+- name: Import yubikey-sierra-piv
+  ansible.builtin.import_tasks: yubikey-sierra-piv.yml
   when: ansible_distribution_version is version_compare( '10.12', '>=')

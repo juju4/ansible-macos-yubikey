@@ -1,4 +1,5 @@
 ---
 
-- import_tasks: yubikey.yml
+- name: Import yubikey
+  ansible.builtin.import_tasks: yubikey.yml
   when: ansible_os_family == "Darwin"
