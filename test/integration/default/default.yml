@@ -5,14 +5,14 @@
     - macos_apps_install_list:
         # https://www.yubico.com/support/knowledge-base/categories/articles/smart-card-tools/
         - { u: 'https://developers.yubico.com/yubikey-piv-manager/Releases/yubikey-piv-manager-1.4.2b-mac.pkg',
-            s: '34fb7e49ac6ec0ed0162a9cd44b9256c118b154df3561a33e67586d377f753ec',
+            s: 'sha256:34fb7e49ac6ec0ed0162a9cd44b9256c118b154df3561a33e67586d377f753ec',
             n: 'YubiKey PIV Manager',
             t: 'pkgonly',
             version: '1.4.2',
             v: false
         }
         - { u: 'https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-1.4.3-mac.zip',
-            s: 'ac038a2c8df9bef8cd98b977f039e483f43f1fbaf4425df17fb7ae0886ba3f31',
+            s: 'sha256:ac038a2c8df9bef8cd98b977f039e483f43f1fbaf4425df17fb7ae0886ba3f31',
             n: 'yubico-piv-tool',
             t: 'zip',
             version: '1.4.3',
@@ -31,7 +31,7 @@
           # https://www.yubico.com/support/knowledge-base/categories/articles/yubikey-personalization-tools/
           # GUI is only through Apple Store. CLI below
           - { u: 'https://developers.yubico.com/yubikey-personalization/Releases/ykpers-1.18.0-mac.zip',
-              s: 'b9a8a56514bfb66525ac3dd7fe4e92703e33e984e201060a168736db5c5d1df5',
+              s: 'sha256:b9a8a56514bfb66525ac3dd7fe4e92703e33e984e201060a168736db5c5d1df5',
               n: 'ykpers',
               t: 'zip',
               version: '1.18.0',
@@ -43,7 +43,7 @@
           #       => version 0...
           # alternative with macports or homebrew
           - { u: 'https://developers.yubico.com/yubico-pam/Releases/pam_yubico-2.24.pkg',
-              s: '8fa9c6ed427d9e24b4469c8d4b0e34a2cd8e272c68fded28339fd2f31017a2ed',
+              s: 'sha256:8fa9c6ed427d9e24b4469c8d4b0e34a2cd8e272c68fded28339fd2f31017a2ed',
               n: pam_yubico,
               t: pkgonly,
               version: 2.24
