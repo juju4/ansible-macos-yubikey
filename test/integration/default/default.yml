@@ -1,32 +1,33 @@
 ---
 
-- hosts: all
+- name: Test integration playbook
+  hosts: all
   vars:
-    - macos_apps_install_list:
-        # https://www.yubico.com/support/knowledge-base/categories/articles/smart-card-tools/
-        - { u: 'https://developers.yubico.com/yubikey-piv-manager/Releases/yubikey-piv-manager-1.4.2b-mac.pkg',
-            s: 'sha256:34fb7e49ac6ec0ed0162a9cd44b9256c118b154df3561a33e67586d377f753ec',
-            n: 'YubiKey PIV Manager',
-            t: 'pkgonly',
-            version: '1.4.2',
-            v: false
-        }
-        - { u: 'https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-1.4.3-mac.zip',
-            s: 'sha256:ac038a2c8df9bef8cd98b977f039e483f43f1fbaf4425df17fb7ae0886ba3f31',
-            n: 'yubico-piv-tool',
-            t: 'zip',
-            version: '1.4.3',
-            to: '/usr/local/yubico-piv-tool',
-            versioncmd: '/usr/local/yubico-piv-tool/bin/yubico-piv-tool  --version | sed "s@yubico-piv-tool @@"',
-            v: false
-        }
-    - yubikey_users:
-        - vagrant
-    - verbose: true
-    - yubikey_fail_ifnotinitialize: false
+    macos_apps_install_list:
+      # https://www.yubico.com/support/knowledge-base/categories/articles/smart-card-tools/
+      - { u: 'https://developers.yubico.com/yubikey-piv-manager/Releases/yubikey-piv-manager-1.4.2b-mac.pkg',
+          s: 'sha256:34fb7e49ac6ec0ed0162a9cd44b9256c118b154df3561a33e67586d377f753ec',
+          n: 'YubiKey PIV Manager',
+          t: 'pkgonly',
+          version: '1.4.2',
+          v: false
+      }
+      - { u: 'https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-1.4.3-mac.zip',
+          s: 'sha256:ac038a2c8df9bef8cd98b977f039e483f43f1fbaf4425df17fb7ae0886ba3f31',
+          n: 'yubico-piv-tool',
+          t: 'zip',
+          version: '1.4.3',
+          to: '/usr/local/yubico-piv-tool',
+          versioncmd: '/usr/local/yubico-piv-tool/bin/yubico-piv-tool  --version | sed "s@yubico-piv-tool @@"',
+          v: false
+      }
+    yubikey_users:
+      - vagrant
+    verbose: true
+    yubikey_fail_ifnotinitialize: false
   pre_tasks:
-    - name: set variables for pre-sierra systems
-      set_fact:
+    - name: Set variables for pre-sierra systems
+      ansible.builtin.set_fact:
         macos_apps_install_list:
           # https://www.yubico.com/support/knowledge-base/categories/articles/yubikey-personalization-tools/
           # GUI is only through Apple Store. CLI below
@@ -48,7 +49,7 @@
               t: pkgonly,
               version: 2.24
           }
-      when: ansible_distribution_version is version_compare( '10.12', '<')
+      when: ansible_distribution_version is version_compare('10.12', '<')
   roles:
     - juju4.macos_apps_install
     - juju4.macos_yubikey
